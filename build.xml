@@ -13,7 +13,7 @@
 		<replaceregexp file="index.html" match="mxunit.*\.zip" replace="mxunit-${build.version}.zip" byline="true" />
 		<replaceregexp file="index.html" match="id='versionnumber'>.*?&lt;" replace="id='versionnumber'>${build.version}&lt;" />
 		<replaceregexp file="index.html" match="id='versiondate'>.*?&lt;" replace="id='versiondate'>${build.date}&lt;" />
-		<gitPushBuildChanges />
+		<gitPushBuildChanges message="Updating index.html to MXUnit version ${build.version}" />
 	</target>
 	
 	<!--
@@ -25,6 +25,7 @@
 	<macrodef name="gitPushBuildChanges">
 		<attribute name="remoteName" default="origin"/>
 		<attribute name="branchName" default="master"/>
+		<attribute name="message" default="build auto-commit"/>
 		<sequential>
 			<git command="add" dir=".">
 				<args>
@@ -34,7 +35,7 @@
 			<git command="commit" dir=".">
 				<args>
 					<arg value="-m"/>
-					<arg value="'build auto-commit'"/>
+					<arg value="'@{message}'"/>
 				</args>
 			</git>
 			<git command="push" dir=".">

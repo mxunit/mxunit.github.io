@@ -21,6 +21,9 @@
    <feature url="features/org.mxunit.eclipseplugin.feature_1.4.4.201201170659.jar" id="org.mxunit.eclipseplugin.feature" version="1.4.4.201201170659">
       <category name="MXUnit"/>
    </feature>
+   <feature url="features/org.mxunit.eclipseplugin.feature_1.4.5.201211261830.jar" id="org.mxunit.eclipseplugin.feature" version="1.4.5.201211261830">
+      <category name="MXUnit"/>
+   </feature>
    <category-def name="MXUnit" label="MXUnit Releases">
       <description>
          Eclipse Plugin for MXUnit Unit Testing Framework for ColdFusion.

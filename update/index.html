@@ -1,60 +1,44 @@
 <html>
 <head>
-<title>org.mxunit.eclipseplugin.site</title>
+<title>org.mxunit.eclipseplugin.update</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style>@import url("web/site.css");</style>
-<script type="text/javascript">
-	var returnval = 0;
-	var stylesheet, xmlFile, cache, doc;
-	function init(){
-		// NSCP 7.1+ / Mozilla 1.4.1+ / Safari
-		// Use the standard DOM Level 2 technique, if it is supported
-		if (document.implementation && document.implementation.createDocument) {
-			xmlFile = document.implementation.createDocument("", "", null);
-			stylesheet = document.implementation.createDocument("", "", null);
-			if (xmlFile.load){
-				xmlFile.load("site.xml");
-				stylesheet.load("web/site.xsl");
-			} else {
-				alert("Document could not be loaded by browser.");
-			}
-			xmlFile.addEventListener("load", transform, false);
-			stylesheet.addEventListener("load", transform, false);
-		}
-		//IE 6.0+ solution
-		else if (window.ActiveXObject) {
-			xmlFile = new ActiveXObject("msxml2.DOMDocument.3.0");
-			xmlFile.async = false;
-			xmlFile.load("site.xml");
-			stylesheet = new ActiveXObject("msxml2.FreeThreadedDOMDocument.3.0");
-			stylesheet.async = false;
-			stylesheet.load("web/site.xsl");
-			cache = new ActiveXObject("msxml2.XSLTemplate.3.0");
-			cache.stylesheet = stylesheet;
-			transformData();
-		}
-	}
-	// separate transformation function for IE 6.0+
-	function transformData(){
-		var processor = cache.createProcessor();
-		processor.input = xmlFile;
-		processor.transform();
-		data.innerHTML = processor.output;
-	}
-	// separate transformation function for NSCP 7.1+ and Mozilla 1.4.1+ 
-	function transform(){
-		returnval+=1;
-		if (returnval==2){
-			var processor = new XSLTProcessor();
-			processor.importStylesheet(stylesheet); 
-			doc = processor.transformToDocument(xmlFile);
-			document.getElementById("data").innerHTML = doc.documentElement.innerHTML;
-		}
-	}
-</script>
 </head>
-<body onload="init();">
-<!--[insert static HTML here]-->
-<div id="data"><!-- this is where the transformed data goes --></div>
+<body>
+<h1><a href="/">MXUnit</a></h1>
+<ul>
+<li><a href="http://wiki.mxunit.org/display/default/MXUnit+Documentation" title="Wiki">Wiki</a></li>
+<li class="last"><a href="http://groups.google.com/group/mxunit/topics" title="MXUnit List">MXUnit Community</a></li>
+</ul>
+<h2 class="pageTitle">MXUnit Update Site</h2>
+<p>
+This is the Eclipse update site for the MXUnit Eclipse plugin.  
+You need to have Eclipse version 3.4 or above, 
+and add an update site using this URL: 
+<br/><br/>http://mxunit.org/update/<br/><br/>
+to <a href="http://wiki.mxunit.org/display/default/Install+the+Eclipse+Plugin">install</a> it.
+</p>
+<div id="data">
+<table cellspacing="0" cellpadding="0"><tr><td colspan="2" style="border-top:0px; padding-top:3px;padding-left:8px;"><em>Files</em></td></tr>
+		<tr><td valign="top" style="padding:5px"><a href="artifacts.jar">artifacts.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="content.jar">content.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="features/org.mxunit.eclipseplugin.feature_1.3.0.201004040614.jar">features/org.mxunit.eclipseplugin.feature_1.3.0.201004040614.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="features/org.mxunit.eclipseplugin.feature_1.4.0.201011170935.jar">features/org.mxunit.eclipseplugin.feature_1.4.0.201011170935.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="features/org.mxunit.eclipseplugin.feature_1.4.1.201103231626.jar">features/org.mxunit.eclipseplugin.feature_1.4.1.201103231626.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="features/org.mxunit.eclipseplugin.feature_1.4.2.201103282048.jar">features/org.mxunit.eclipseplugin.feature_1.4.2.201103282048.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="features/org.mxunit.eclipseplugin.feature_1.4.3.201201151632.jar">features/org.mxunit.eclipseplugin.feature_1.4.3.201201151632.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="features/org.mxunit.eclipseplugin.feature_1.4.4.201201170659.jar">features/org.mxunit.eclipseplugin.feature_1.4.4.201201170659.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="features/org.mxunit.eclipseplugin.feature_1.4.5.201211261830.jar">features/org.mxunit.eclipseplugin.feature_1.4.5.201211261830.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="features/org.mxunit.eclipseplugin.feature_1.5.0.201604240756.jar">features/org.mxunit.eclipseplugin.feature_1.5.0.201604240756.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="plugins/org.mxunit.eclipseplugin_1.3.0.201004040614.jar">plugins/org.mxunit.eclipseplugin_1.3.0.201004040614.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="plugins/org.mxunit.eclipseplugin_1.4.0.201011170935.jar">plugins/org.mxunit.eclipseplugin_1.4.0.201011170935.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="plugins/org.mxunit.eclipseplugin_1.4.1.201103231626.jar">plugins/org.mxunit.eclipseplugin_1.4.1.201103231626.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="plugins/org.mxunit.eclipseplugin_1.4.2.201103282048.jar">plugins/org.mxunit.eclipseplugin_1.4.2.201103282048.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="plugins/org.mxunit.eclipseplugin_1.4.3.201201151632.jar">plugins/org.mxunit.eclipseplugin_1.4.3.201201151632.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="plugins/org.mxunit.eclipseplugin_1.4.4.201201170659.jar">plugins/org.mxunit.eclipseplugin_1.4.4.201201170659.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="plugins/org.mxunit.eclipseplugin_1.4.5.201211261830.jar">plugins/org.mxunit.eclipseplugin_1.4.5.201211261830.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				<tr><td valign="top" style="padding:5px"><a href="plugins/org.mxunit.eclipseplugin_1.5.0.201604240734.jar">plugins/org.mxunit.eclipseplugin_1.5.0.201604240734.jar</a></td><td valign="top" style="padding:5px"></td></tr>
+				</table>
+</div>
+
 </body>
 </html>

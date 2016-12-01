@@ -1,124 +1,166 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>MXUnit - Unit Test Framework and Eclipse Plugin for Adobe ColdFusion</title>
-    <meta name="keywords" value="coldfusion unit testing test cfmx xunit developer framework quality assurance open source community free" />
-    <link rel="stylesheet" type="text/css" href="main.css">
-   <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wCurv5Qfn7+gX5+/oGenv5g7u7+D////wD///8A////AP///wD///8A////AP///wD///8A////AP///wBeXv6hAAD//35+/oG+vv4/Tk7+sS4u/tDu7v4P////AP///wD///8A////AP///wD///8A////AP///wDe3v4fAAD//05O/rH///8A////AP///wA+Pv7Bnp7+YP///wD///8A////AP///wD///8A////AP///wD///8Avr7+PwAA//9+fv6B////AP///wD///8Afn7+gX5+/oH///8A////AP///wD///8A////AP///wD///8A////AL6+/j8AAP//fn7+gf///wD///8A////AH5+/oF+fv6B////AP///wD///8A////AP///wD///8A////AP///wC+vv4/AAD//35+/oH///8A////AP///wB+fv6Bfn7+gf///wC+5L4/vuS+P77kvj////8A3vHeH+737g/e8d4fjqvNcAAA//9ecd6hzurOMP///wD///8Afn7+gX5+/oH///8Afst+gR6kHuC+5L4/////AB6kHuBevl6h3vHeH16XnqEAAP//Jlqm2c7qzjD///8A////AH5+/oF+fv6B////AL7kvj8+sT7B////AJ7XnmAAmQD/Dp4O8LK58kwuN+7QAAD//wYK9vienv5g////AJ6e/mAuLv7QDg7+8J6e/mC+5L4/PrE+wf///wAepB7gAJkA/z6xPsF+y36BvuS+PwCZAP9+y36B////AP///wD///8A////AP///wD///8AvuS+Pz6xPsGu3q5QAJkA/16+XqG+5L4/HqQe4L7kvj8AmQD/fst+gf///wD///8A////AP///wD///8A////AL7kvj8+sT7BPrE+wQCZAP/e8d4f////AD6xPsFevl6hAJkA/37LfoH///8A////AP///wD///8A////AP///wC+5L4/Dp4O8ACZAP8+sT7B////AP///wCe155gAJkA/wCZAP9+y36B////AP///wD///8A////AP///wD///8AvuS+PwCZAP8AmQD/vuS+P////wD///8A////AB6kHuAAmQD/fst+gf///wD///8A////AP///wD///8A////AC6rLtAAmQD/PrE+wf///wD///8A////AP///wCO0Y5wAJkA/y6rLtCe155g////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A/88AAP8TAAD/OwAA/zkAAP85AAD/OQAA/zkAADI5AACyOQAAoT8AAKU/AACMPwAAjj8AAJ4/AAAfPwAA//8AAA==" rel="icon" type="image/x-icon" />
-
-<style>
- .menu{
-   font-size:1.25em;
-   padding-right:3em;
-   color:whitesmoke;
-}
-</style>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MXUnit - Unit Test Framework and Eclipse Plugin for CFML</title>
+<meta name="keywords"
+  value="coldfusion unit testing test cfmx xunit developer framework quality assurance open source community free" />
+<link href="res/css/bootstrap.min.css" rel="stylesheet">
+<link href="res/css/main.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<link
+  href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A////AP///wD///8A////AP///wCurv5Qfn7+gX5+/oGenv5g7u7+D////wD///8A////AP///wD///8A////AP///wD///8A////AP///wBeXv6hAAD//35+/oG+vv4/Tk7+sS4u/tDu7v4P////AP///wD///8A////AP///wD///8A////AP///wDe3v4fAAD//05O/rH///8A////AP///wA+Pv7Bnp7+YP///wD///8A////AP///wD///8A////AP///wD///8Avr7+PwAA//9+fv6B////AP///wD///8Afn7+gX5+/oH///8A////AP///wD///8A////AP///wD///8A////AL6+/j8AAP//fn7+gf///wD///8A////AH5+/oF+fv6B////AP///wD///8A////AP///wD///8A////AP///wC+vv4/AAD//35+/oH///8A////AP///wB+fv6Bfn7+gf///wC+5L4/vuS+P77kvj////8A3vHeH+737g/e8d4fjqvNcAAA//9ecd6hzurOMP///wD///8Afn7+gX5+/oH///8Afst+gR6kHuC+5L4/////AB6kHuBevl6h3vHeH16XnqEAAP//Jlqm2c7qzjD///8A////AH5+/oF+fv6B////AL7kvj8+sT7B////AJ7XnmAAmQD/Dp4O8LK58kwuN+7QAAD//wYK9vienv5g////AJ6e/mAuLv7QDg7+8J6e/mC+5L4/PrE+wf///wAepB7gAJkA/z6xPsF+y36BvuS+PwCZAP9+y36B////AP///wD///8A////AP///wD///8AvuS+Pz6xPsGu3q5QAJkA/16+XqG+5L4/HqQe4L7kvj8AmQD/fst+gf///wD///8A////AP///wD///8A////AL7kvj8+sT7BPrE+wQCZAP/e8d4f////AD6xPsFevl6hAJkA/37LfoH///8A////AP///wD///8A////AP///wC+5L4/Dp4O8ACZAP8+sT7B////AP///wCe155gAJkA/wCZAP9+y36B////AP///wD///8A////AP///wD///8AvuS+PwCZAP8AmQD/vuS+P////wD///8A////AB6kHuAAmQD/fst+gf///wD///8A////AP///wD///8A////AC6rLtAAmQD/PrE+wf///wD///8A////AP///wCO0Y5wAJkA/y6rLtCe155g////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A/88AAP8TAAD/OwAA/zkAAP85AAD/OQAA/zkAADI5AACyOQAAoT8AAKU/AACMPwAAjj8AAJ4/AAAfPwAA//8AAA=="
+  rel="icon" type="image/x-icon" />
 </head>
 <body>
-  <div class="menu" style="padding-bottom:2em:0;background-color:#222;">
-  <table width="100%" border=0>
-	<tr>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+            class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">MXUnit</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href="https://github.com/downloads/mxunit/mxunit/mxunit-2.1.3.zip"
+            title="Download the latest version"> Download </a></li>
+          <li><a href="http://wiki.mxunit.org/display/default/MXUnit+Documentation"
+            title="Documentation, Tutorials, etc ..."> Docs </a></li>
+          <li><a href="http://groups.google.com/group/mxunit/topics" title="Get Help, Get Involved"> Google
+              Group </a></li>
+          <li><a href="http://blog.mxunit.org" title="The World-famous MXUnit Blog"> Blog </a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container" role="main">
 
-	 <td style="padding-left:2em" align="middle">
-		      <a class="menu" href="https://github.com/downloads/mxunit/mxunit/mxunit-2.1.3.zip" title="Download the latest version"> Download </a>
-			  <a class="menu"  href="http://wiki.mxunit.org/display/default/MXUnit+Documentation" title="Documentation, Tutorials, etc ..."> Docs </a>
-			  <a class="menu"  href="http://groups.google.com/group/mxunit/topics" title="Get Help, Get Involved"> Google Group </a>
-			  <a class="menu"  href="http://blog.mxunit.org" title="The World-famous MXUnit Blog"> Blog </a>
-	</td>
-	</tr>
-	</table>
-</div><div style="position:relative;top:-18px">
- <a href="/index.cfm"><img src="https://mxunit.s3.amazonaws.com/images/mx_screenshots/no-bugs-new.png" border="0" alt="Download to get rid of those pesky bugs." align="absmiddle" style="float:left;padding-right:1em;"></a>
-  <h1>MXUnit   &nbsp;&nbsp; <span style=";left:120px;font-size:11px;color:gray;font-family:verdana">Unit Testing framework for ColdFusion developers</span></h1>
- </div>
+    <div class="container">
+      <img src="https://mxunit.s3.amazonaws.com/images/mx_screenshots/no-bugs-new.png" border="0"
+        alt="Download to get rid of those pesky bugs." style="float:left">
+      <h1 style="margin-bottom:0px;margin-top:0px">MXUnit</h1>
+      <span style="font-size: 11px; margin-top:-19em; color: gray; font-family: verdana">Unit Testing framework for ColdFusion
+        developers</span>
+    </div>
 
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <a href="https://github.com/downloads/mxunit/mxunit/mxunit-2.1.3.zip">1. Download</a>
+            </h3>
+          </div>
+          <div class="panel-body blueish">
+            the latest MXUnit Framework. <a href="https://github.com/downloads/mxunit/mxunit/mxunit-2.1.3.zip"><img
+              src="res/images/mx-sshot-1.png" border="0"></a>
 
-<div align="center" id="content" style="padding-left:1em">
-     <table border="0">
-      <td valign="top">
-        <div class="myDiv" align="center"  style="width:240px">
-           <a href="https://github.com/downloads/mxunit/mxunit/mxunit-2.1.3.zip" style="font-weight:bold;font-size:12pt">1. Download</a> <br>the latest MXUnit Framework.
-           <a href="https://github.com/downloads/mxunit/mxunit/mxunit-2.1.3.zip" style="font-weight:bold;font-size:12pt"><img src="images/mx-sshot-1.png" border="0"></a>
-
-         <li style="font-size:12px;margin:0,0;text-align:left">Unzip into webroot</li>
-         <li style="font-size:12px;margin:0,0;text-align:left">Test the install: http://myserver/mxunit/index.cfm </li>
-
-	  <hr />
-	  <div style="text-indent:0;padding:4">
-	  <strong style="font-weight:bold">Features</strong>
-			<li style="font-size:12px;margin:0,0;text-align:left">Easy to use</li>
-			<li style="font-size:12px;margin:0,0;text-align:left">Eclipse integration</li>
-			<li style="font-size:12px;margin:0,0;text-align:left">Method-level testing</li>
-			<li style="font-size:12px;margin:0,0;text-align:left">Debug Output</li>
-			<li style="font-size:12px;margin:0,0;text-align:left"><a href="http://wiki.mxunit.org/display/default/Ant+Task+Doc" style="font-weight:bold">ANT task</a></li>
-			<li style="font-size:12px;margin:0,0;text-align:left">Test Stub Generator</li>
-			<li style="font-size:12px;margin:0,0;text-align:left">Latest Version: <span id='versionnumber'>2.1.3</span> (<span id='versiondate'>09/27/2012</span>)</li>
-      <!--
+            <div style="text-indent: 0; padding: 4">
+              <strong style="font-weight: bold">Features</strong>
+              <ul>
+                <li>Unzip into webroot</li>
+                <li>Test the install: http://myserver/mxunit/index.cfm</li>
+                <hr />
+                <li>Easy to use</li>
+                <li>Eclipse integration</li>
+                <li>Method-level testing</li>
+                <li>Debug Output</li>
+                <li><a href="http://wiki.mxunit.org/display/default/Ant+Task+Doc" style="font-weight: bold">ANT
+                    task</a></li>
+                <li>Test Stub Generator</li>
+                <li>Latest Version: <span id='versionnumber'>2.1.3</span> (<span id='versiondate'>09/27/2012</span>)
+                </li>
+              </ul>
+              <!--
       <hr />
 			<p>Latest Build <a href="testresults/index.html">Test Results</a> for the <a href="https://github.com/mxunit/mxunit/zipball/nightly_latest_stable_build" title="Download the last successful nightly build">Nightly Build</a> </p>
   -->
-    </div>
-      </div>
-      </td>
-      <td valign="top">
-         <div class="myDiv" align="center" style="width:420px">
-          <strong style="font-weight:bold">2. Get the MXUnit Eclipse Plugin</strong><br />
-          <img src="images/mx-sshot-2.png">
-
-            <li style="font-size:12px;margin:0,0;text-align:left">Download and install <a href="http://www.eclipse.org">Eclipse</a> and the
-                <a href="https://github.com/downloads/mxunit-2.1.3.zip">MXUnit Framework</a></li>
-            <li style="font-size:12px;margin:0,0;text-align:left">On the Eclipse menu, select Help > Software Updates > Find and Install.
-            Select Search for New Features to Install. Click New Remote Site.
-            Enter MXUnit Plugin for the Name and http://mxunit.org/update for the URL. Click Finish and follow the instructions.
-            </li>
-            <li style="font-size:12px;margin:0,0;text-align:left">Details:
-            Open Eclipse, then read Help > Help Contents > <em>MXUnit: ColdFusion Unit Testing Framework</em>
-
-            </li>
-			<li style="font-size:12px;margin:0,0;text-align:left"><b>System requirements:</b> Eclipse 3.4 or later, running under JDK1.5 or later. <a href="http://wiki.mxunit.org/display/default/Install+the+Eclipse+Plugin">Read this</a> for 3.2/3.3 support. <a href="#" id="flexbuilder" onclick="return false;">YMMV with FlexBuilder standalone.</a></li>
-            <br />
-			<br />
+            </div>
           </div>
-        </td>
+        </div>
+      </div>
 
-		<td valign="top">
-		 <div class="myDiv" align="center" style="width:240px">
-          	<a href="http://wiki.mxunit.org/display/default/MXUnit+Documentation" style="font-weight:bold;font-size:12pt">3. Get started and kick some TDD ... !</a><br>
-		   <p><a href="http://wiki.mxunit.org/display/default/MXUnit+Documentation" style="font-weight:bold;font-size:12pt">
-		   <img width="220px" src="http://i905.photobucket.com/albums/ac259/virtix/2008_kung_fu_panda_002-1.jpg"></a>
-			</p>
-		  </div>
-		</td>
-       </tr>
-	  <tr>
-		<td colspan="2">
-	  </tr>
-     </table>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">2. Get the MXUnit Eclipse Plugin</h3>
+          </div>
+          <div class="panel-body blueish">
+            <img src="res/images/mx-sshot-2.png" style="width: 100%">
 
+            <li>Download and install <a href="http://www.eclipse.org">Eclipse</a> and the <a
+              href="https://github.com/downloads/mxunit-2.1.3.zip">MXUnit Framework</a>
+            </li>
+            <li>On the Eclipse menu, select Help > Software Updates > Find and Install. Select Search for New
+              Features to Install. Click New Remote Site. Enter MXUnit Plugin for the Name and http://mxunit.org/update
+              for the URL. Click Finish and follow the instructions.</li>
+            <li>Details: Open Eclipse, then read Help > Help Contents > <em>MXUnit: ColdFusion Unit Testing
+                Framework</em>
+            </li>
+            <li><b>System requirements:</b> Eclipse 3.4 or later, running under JDK1.5 or later. <a
+              href="http://wiki.mxunit.org/display/default/Install+the+Eclipse+Plugin">Read this</a> for 3.2/3.3
+              support. <a href="#" id="flexbuilder" onclick="return false;">YMMV with FlexBuilder standalone.</a></li> <br />
+          </div>
+        </div>
+      </div>
 
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <a href="http://wiki.mxunit.org/display/default/MXUnit+Documentation">3. Get started and kick some TDD
+                ... !</a>
+            </h3>
+          </div>
+          <div class="panel-body blueish">
+            <a href="http://wiki.mxunit.org/display/default/MXUnit+Documentation"><img width="100%"
+              src="http://i905.photobucket.com/albums/ac259/virtix/2008_kung_fu_panda_002-1.jpg"> </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p align="center">
+      <!--- <strong style="background-color:yellow;color:darkred;font-weight:bold;padding:2">Updated!</strong>  --->
+      Looking for Adobe Max, cf.Objective(), CFUnited or other <a
+        href="http://wiki.mxunit.org/display/default/Presentations%2C+Talks%2C+and+Meetups"><strong
+        style="font-weight: bold">presentations</strong>?</a>
+    </p>
+
+    <div align="center">
+      <hr size="1" style="width: 98%" />
+      <a href="license.txt" title="MIT License"> <cfoutput>2016 MXUnit.org</cfoutput></a>
+    </div>
+
+    <script type="text/javascript">
+					var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl."
+							: "http://www.");
+					document
+							.write(unescape("%3Cscript src='"
+									+ gaJsHost
+									+ "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+				</script>
+    <script type="text/javascript">
+					try {
+						var pageTracker = _gat._getTracker("UA-3137017-1");
+						pageTracker._trackPageview();
+					} catch (err) {
+					}
+				</script>
   </div>
-
-
-
-
-  <p align="center"><!--- <strong style="background-color:yellow;color:darkred;font-weight:bold;padding:2">Updated!</strong>  --->Looking for Adobe Max, cf.Objective(), CFUnited or other <a href="http://wiki.mxunit.org/display/default/Presentations%2C+Talks%2C+and+Meetups"><strong style="font-weight:bold">presentations</strong>?</a> </p>
-
-
-
-
-  <div align="center">
-  <hr size="1"  style="width:98%" />
-   <a href="license.txt" title="MIT License"> <cfoutput>2016 MXUnit.org</cfoutput></a>
-</div>
-
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-3137017-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
 </body>
 </html>

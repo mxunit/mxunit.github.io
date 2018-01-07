@@ -7,7 +7,7 @@
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
-  <loc>http://mxunit.org/</loc>
+  <loc>http://cfeclipse.org/mxunit/</loc>
   <priority>1.00</priority>
   <changefreq>daily</changefreq>
 </url>
@@ -17,7 +17,7 @@
   <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>http://wiki.mxunit.org/display/default/MXUnit+Documentation</loc>
+  <loc>https://github.com/mxunit/org.mxunit.eclipseplugin/wiki/MXUnit+Documentation</loc>
   <priority>0.80</priority>
   <changefreq>daily</changefreq>
 </url>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <description url="http://mxunit.org/update">
+   <description url="http://cfeclipse.org/mxunit/update">
       Eclipse Plugin for MXUnit Unit Testing Framework for ColdFusion.
    </description>
    <feature url="features/org.mxunit.eclipseplugin.feature_1.1.4.200912190937.jar" id="org.mxunit.eclipseplugin.feature" version="1.1.4.200912190937">
